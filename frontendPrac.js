@@ -7,6 +7,7 @@ const userOption = document.querySelectorAll('.userOption div');
 const winMsg = document.querySelector('.winMsg p');
 const drawMsg = document.querySelector('.drawMatch');
 let pcIconChange = undefined;
+let rpsgamewin = true;
 
 
 // This is the animation of pc selected options
@@ -24,6 +25,7 @@ function winalert(msg) {
     winMsg.innerHTML = msg;
     document.querySelector(winMsg.parentElement.style.visibility = "visible");
     userSelectedIcon.style.textShadow = "0px 0px 48px #e9ff00";
+    rpsgamewin = false;
 }
 
 // loser of the game
@@ -31,33 +33,32 @@ function loosealert(loosemsg) {
     winMsg.innerHTML = loosemsg;
     document.querySelector(winMsg.parentElement.style.visibility = "visible");
     pcSelectedIcon.style.textShadow = "0px 0px 48px #e9ff00";
-}
-
-// draw the game
-function draw(){
-    iconChangeAnimation();
-    drawMsg.classList.remove("drawMsgAnimation");
-    userSelectedIcon.style.visibility = "hidden";
-    document.querySelector('.userOption').style.visibility = "visible";
+    rpsgamewin = false;
 }
 
 // Checking the game result
 // Check the match is draw
 let rpsCheckDraw = () =>{
     if ((userSelectedIcon.textContent == "✊") && (pcSelectedIcon.textContent == "✊")) {
+        rpsgamewin = false;
         drawMsg.classList.add("drawMsgAnimation");
         setTimeout(() => {
-            draw();
+            drawMsg.classList.remove("drawMsgAnimation");
+            resetGame();
         }, 1000);
     } else if ((userSelectedIcon.textContent == "🖐") && (pcSelectedIcon.textContent == "🖐")) {
+        rpsgamewin = false;
         drawMsg.classList.add("drawMsgAnimation");
         setTimeout(() => {
-            draw();
+            drawMsg.classList.remove("drawMsgAnimation");
+            resetGame();
         }, 1000);
     } else if ((userSelectedIcon.textContent == "✌") && (pcSelectedIcon.textContent == "✌")) {
+        rpsgamewin = false;
         drawMsg.classList.add("drawMsgAnimation");
         setTimeout(() => {
-            draw();
+            drawMsg.classList.remove("drawMsgAnimation");
+            resetGame();
         }, 1000);
     }
 }
@@ -87,7 +88,7 @@ let rpsPcWin = () =>{
 // Control the game with my keybord
 document.addEventListener("keypress", function(key){
     // Press 1
-    if(key.keyCode == 49){
+    if((key.keyCode == 49) && (rpsgamewin === true)){
         userSelectedIcon.innerText = "✊";        
         userSelectedIcon.style.visibility = "visible";
         userOption[0].parentElement.style.visibility="hidden";
@@ -98,7 +99,7 @@ document.addEventListener("keypress", function(key){
     }
 
     // Press 2
-    if(key.keyCode == 50){
+    if((key.keyCode == 50) && (rpsgamewin === true)){
         userSelectedIcon.innerText = "🖐";        
         userSelectedIcon.style.visibility = "visible";
         userOption[0].parentElement.style.visibility="hidden";
@@ -109,7 +110,7 @@ document.addEventListener("keypress", function(key){
     }
 
     // Press 3
-    if(key.keyCode == 51){
+    if((key.keyCode == 51) && (rpsgamewin === true)){
         userSelectedIcon.innerText = "✌";        
         userSelectedIcon.style.visibility = "visible";
         userOption[0].parentElement.style.visibility="hidden";
@@ -127,13 +128,13 @@ document.addEventListener("keypress", function(key){
 
 // Working on User movement
 userOption.forEach((a) => {
-    a.addEventListener("click", function (select) {        
+    a.addEventListener("click", function (select) {
         userSelectedIcon.innerHTML = select.target.textContent;
         a.parentElement.style.visibility = "hidden";
         userSelectedIcon.style.visibility = "visible";
         iconStopAnimation();
         rpsCheckDraw();
-        rpsUserWin();        
+        rpsUserWin();
         rpsPcWin();
     });
 });
@@ -145,12 +146,13 @@ function iconStopAnimation() {
 
 // Restart the game
 function resetGame() {
+    iconChangeAnimation();
     document.querySelector(winMsg.parentElement.style.visibility = "hidden");
     pcSelectedIcon.style.textShadow = "none";
     userSelectedIcon.style.textShadow = "none";
     userSelectedIcon.style.visibility = "hidden";
     document.querySelector('.userOption').style.visibility = "visible";
-    iconChangeAnimation();
+    rpsgamewin = true;
 }
 
 // This is the bubble game created
@@ -245,11 +247,9 @@ let drawSection = document.querySelector(".drawSection");
 let tttPoint = document.querySelectorAll(".ttt-point");
 let turn = "X";
 let count = 0;
-let singleBox = undefined;
 
 // Click to display the user turn
 box.forEach((boxes) => {
-    singleBox = boxes;
     boxes.addEventListener("click", function (event) {
         if (event.target.innerHTML == "") {
             ++count;
@@ -276,7 +276,6 @@ function checkDraw() {
     let isWin = gameWin();
     if (isWin != true && count === 9) {
         drawSection.classList.remove("draw");
-        singleBox.classList.add("disable");
         count = 0;
     }
 }
@@ -291,6 +290,9 @@ function gameWin(){
         if((pattern1 !== "") && (pattern2 !== "") && (pattern3 !== "")){
             if((pattern1 === pattern2) && (pattern2 === pattern3)){
                 congratulation(pattern1);
+                box.forEach(function(singleBox){
+                    singleBox.classList.add("disable");
+                });
                 return true;
             }
         }
