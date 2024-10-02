@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="frontendPrac.css">
+    <title>Small Projects Portfolio</title>
+</head>
+
+<body>
+    <!-- This is the ROCK PAPER SCISSOR GAME -->
+    <section id="rps-section">
+        <h1 class="drawMatch" style="position: absolute;visibility: hidden;">Match was tie</h1>
+        <div class="winMsg">
+            <p></p>
+            <button onclick="resetGame()">New game</button>
+        </div>
+        <div class="rps-container">
+            <h1>Let's play the ROCK PAPER SISSOR</h1>
+            <div class="rps-game">
+                <div class="computer">
+                    <b>COMPUTER</b>
+                    <div class="pcSelectedIcon">🖐</div>
+                </div>
+                <div class="user">
+                    <b>USER</b>
+                    <div class="userWraper">
+                        <div class="userSelectedIcon"></div>
+                        <div class="userOption">
+                            <div>✊</div>
+                            <div>🖐</div>
+                            <div>✌</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- This is the bubble game -->
+    <section id="bubble">
+        <div class="container">
+            <div class="navbar">
+                <div class="nav-item">
+                    <h3>Target</h3>
+                    <h2 class="target"></h2>
+                </div>
+                <div class="nav-item">
+                    <h3>Score</h3>
+                    <h2 class="score">0</h2>
+                </div>
+                <div class="nav-item">
+                    <h3>Time</h3>
+                    <h2 class="timer">60</h2>
+                </div>
+            </div>
+            <div id="bubble-container">
+                <div class="bubble-store"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- This is Tic Tac Toe game -->
+    <section id="game">
+        <div class="game-container">
+            <div class="game-part">
+                <div class="box box1 bt bl"></div>
+                <div class="box box2 bt"></div>
+                <div class="box box3 bt br"></div>
+                <div class="box box4 bl"></div>
+                <div class="box box5"></div>
+                <div class="box box6 br"></div>
+                <div class="box box7 bb bl"></div>
+                <div class="box box8 bb"></div>
+                <div class="box box9 bb br"></div>
+            </div>
+            <div class="game-details">
+                <h2>This game created by MIRAJ</h2>
+                <div class="points">
+                    <button class="resetBtn" onclick="tictactoeReset()">Reset</button>
+                    <h3 class="ttt-point" style="width: 50px;margin-left:20px">X - <span>0</span></h3>
+                    <h3 class="ttt-point">O - <span>0</span></h3>
+                </div>
+            </div>
+        </div>
+        <div class="gameWin congrats">
+            <h2 class="winner"></h2>
+            <p style="margin-block: 5px;">Congratulation you win</p>
+            <button class="resetBtn" onclick="tictactoeReset()">New Game</button>
+        </div>
+        <div class="gameWin drawSection draw">
+            <p style="margin-block: 5px;">Ooops the game is draw</p>
+            <button class="resetBtn" onclick="tictactoeReset()">New Game</button>
+        </div>
+    </section>
+
+    <!-- Snake game -->
+    <section id="snake-container">
+        <div class="snake">
+            <p class="snake-part" style="background-color: red;"></p>
+            <p class="snake-part" style="background-color: blue;"></p>
+        </div>
+    </section>
+
+    <!-- Shoting game -->
+    <!-- <section id="game">
+        <button class="start" onclick="gameStart()">Start</button>
+       <div class="anime-section">
+            <h1 class="point">0</h1>
+            <div class="anime-container"></div>
+        </div>
+
+        <div class="hero">
+            <div class="heroChar-container">
+                <img src="invitation.jpg">
+                <div class="bullet-container"></div>
+            </div>
+        </div>
+    </section> -->
+
+    <script src="frontendPrac.js"></script>
+</body>
+</html>

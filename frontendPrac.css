@@ -1,0 +1,501 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    scroll-behavior: smooth;
+    font-family: arial;
+    user-select: none;
+}
+
+h1{
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+/* ROCK PAPER SCISSOR
+======================= */
+#rps-section{
+    background-color: rgb(68, 68, 68);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.winMsg{
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 7px;
+    width: 50%;
+    position: absolute;
+    z-index: 99;
+    border-radius: 10px;
+    padding: 10px 0px;
+    visibility: hidden;
+}
+
+.winMsg button{
+    padding: 7px;
+    background-color: #FFC83D;
+    border-radius: 7px;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+.rps-container{
+    padding: 20px;
+    border: 1px solid black;
+    height: 97%;
+    border-radius: 10px;
+}
+
+.rps-game{
+    display: grid;
+    gap: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.computer, .user{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 7px;
+    height: 40vh;
+}
+
+.pcSelectedIcon{
+    transform: rotate(180deg);
+}
+
+.pcSelectedIcon, .userSelectedIcon{
+    font-size: 7rem;
+    border: 5px solid #FFC83D;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.userSelectedIcon{
+    visibility: hidden;
+    position: absolute;
+}
+
+.userWraper{
+    height: 95%;
+    display: flex;
+    justify-content: center;
+}
+
+.userOption{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+}
+
+.userOption div{
+    border: 1px solid black;
+    border-radius: 50%;
+    font-size: 60px;
+    height: 130px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    transition: text-shadow 1s linear;
+}
+
+.userOption div:hover{
+    border: transparent;
+    text-shadow: 0px 0px 68px #e9ff00;
+}
+
+.drawMsgAnimation{
+    visibility: visible !important;
+    animation: drawMatch 2s linear;
+    transition: 0.3s;
+}
+
+@keyframes drawMatch {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+        margin-top: 100px;
+    }
+    100%{
+        margin-top: 100px;
+        opacity: 0;
+    }
+}
+
+/* This is a practice bubble game
+====================================== */
+#bubble{
+    background-color: purple;
+    color: white;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    width: 90%;
+    background-color:white;
+    border-radius: 7px;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: purple;
+    width: 98.4%;
+    margin: 10px auto;
+    padding: 5px 30px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.nav-item{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-item h2{
+    background-color: white;
+    color:black;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+#bubble-container{
+    width: 100%;
+    display: flex;
+    padding: 5px 15px 15px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.bubble-store{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    height: 78vh;
+}
+
+.bubble{
+    width: fit-content;
+    padding: 16px 21px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: purple;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gmOver-container{
+    position: absolute;
+}
+
+.gmOver-container h2{
+    color: black;
+    font-size: 5vw;
+}
+
+.gmOver-container button{
+    font-weight: 900;
+    font-size: 16px;
+    padding: 10px;
+    background-color: gold;
+    border: none;
+    cursor: pointer;
+    border-radius: 7px;
+    margin: 10px auto 0px;
+    display: block;
+}
+
+
+/* This is Tic Tac Toe game styling 
+=====================================*/
+#game{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(92, 31, 92);
+}
+
+.game-container{
+    padding: 1rem;
+    width: 80%;
+    display: flex;
+    background-color: white;
+    box-shadow: 0px 2px 5px white;
+    border-radius: 10px;
+}
+
+.game-part{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.box{
+    height: 20vh;
+    width: 12vw;
+    border: 2px solid black;
+    font-size: 11vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.box:hover{
+    background: rgba(132, 179, 175, 0.322);
+}
+
+.bt{
+    border-top: none;
+}
+
+.br{
+    border-right: none;
+}
+
+.bb{
+    border-bottom: none;
+}
+
+.bl{
+    border-left: none;
+}
+
+.game-details{
+    margin-left: 30px;
+}
+
+.points{
+    display: flex;
+    align-items: center;
+}
+
+.resetBtn{
+    background: #000000;
+    border: none;
+    padding: 10px;
+    border-radius: 7px;
+    font-weight: 600;
+    color: white;
+    margin-top: 10px;
+    font-size: 2vw;
+    cursor: pointer;
+}
+
+.gameWin{
+    position: absolute;
+    padding: 20px;
+    border-radius: 7px;
+    background: white;
+    box-shadow: 0px 0px 10px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.congrats{
+    visibility: hidden;
+}
+
+.draw{
+    visibility: hidden;
+}
+
+@media screen and (max-width:630px){
+    .game-container{
+        flex-direction: column;
+    }
+
+    .game-details{
+        display: grid;
+        place-items: center;
+    }
+
+    .game-details h1{
+        text-align: center;
+    }
+
+    .game-part{
+        margin: auto;
+    }
+
+    .box{
+        width: 20vw;
+    }
+
+    .game-details button{
+        font-size: 4vw;
+    }
+}
+
+.disable{
+    pointer-events: none;
+}
+
+
+/* This is for snake game */
+#snake-container {
+    background-color: purple;
+    color: white;
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.snake {
+    display: flex;
+    border: 1px solid black;
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+
+.snake-part {
+    background-color: black;
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+
+/* This css is for fire game and the game is not complete
+   ====================================================  */
+   #game{
+    background: url("https://i.pinimg.com/736x/89/e3/7d/89e37d9611818e81f65d368d0350e5c7.jpg") no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.start{
+    position: relative;
+    top: 50%;
+    padding: 10px 21px;
+    font-size: 34px;
+    margin: auto;
+    display: block;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.anime-section{
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    height: 87%;
+    transition: 3s;
+    position: relative;
+}
+
+.anime{
+    width: 100px;
+    position: absolute;
+    top: -25px;
+    animation: animeMove 15s linear infinite;
+}
+
+@keyframes animeMove{
+    0%{
+        top: -25px;
+    }
+    100%{
+        top: 115%;
+    }
+}
+
+.hero{
+    height: 13%;
+    margin: auto;
+}
+
+.heroChar-container{
+    display: flex;
+    width: fit-content;
+    margin: auto;
+}
+
+.heroChar-container img{
+    height: 100px;
+    object-fit: cover;
+}
+
+.bullet{
+    height: 50px !important;
+    object-fit: cover;
+    position: absolute;
+    animation: bullet 2s ease-in-out forwards;
+}
+
+@keyframes bullet{
+    0%{
+        top: calc(100% - 12%);
+    }
+    50%{
+        top: -80px;
+    }
+    100%{
+        top: -80px;
+    }
+}
+
+.point{
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    font-size: 30vw;
+    opacity: 0.6;
+}
