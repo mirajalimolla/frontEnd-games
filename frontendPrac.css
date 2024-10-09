@@ -10,14 +10,27 @@ body{
     user-select: none;
 }
 
-h1{
-    font-size: 2.5rem;
-    text-align: center;
-}
+/* .start{
+    padding: 10px 25px;
+    font-size: 20px;
+    background-color: orange;
+    border-radius: 7px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: #616161;
+    position: absolute;
+    z-index: 99;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+} */
 
 /* ROCK PAPER SCISSOR
 ======================= */
 #rps-section{
+    position: relative;
     background-color: rgb(68, 68, 68);
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
@@ -25,6 +38,7 @@ h1{
     align-items: center;
     justify-content: center;
     height: 100vh;
+    width: 100%;
 }
 
 .winMsg{
@@ -154,6 +168,7 @@ h1{
 /* This is a practice bubble game
 ====================================== */
 #bubble{
+    position: relative;
     background-color: purple;
     color: white;
     width: 100%;
@@ -197,12 +212,11 @@ h1{
 }
 
 #bubble-container{
-    width: 100%;
-    display: flex;
     padding: 5px 15px 15px;
+    overflow: hidden;
+    display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
 }
 
 .bubble-store{
@@ -250,11 +264,13 @@ h1{
 
 /* This is Tic Tac Toe game styling 
 =====================================*/
-#game{
-    min-height: 100vh;
+#ttt-game{
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
     background-color: rgb(92, 31, 92);
 }
 
@@ -344,6 +360,12 @@ h1{
     visibility: hidden;
 }
 
+.drawMatch{
+    visibility: hidden;
+    position: absolute;
+    z-index: 99;
+}
+
 @media screen and (max-width:630px){
     .game-container{
         flex-direction: column;
@@ -376,40 +398,57 @@ h1{
 }
 
 
-/* This is for snake game */
+/* This is for snake game 
+===========================*/
 #snake-container {
-    background-color: purple;
-    color: white;
     position: relative;
     display: grid;
-    place-items: center;
+    background-color: purple;
+    color: white;
     height: 100vh;
+    width: 100%;
 }
 
 .snake {
     display: flex;
-    border: 1px solid black;
     width: fit-content;
     height: fit-content;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
+    border: 1px solid black;
 }
 
-.snake-part {
+.snakePart {
     background-color: black;
-    padding: 5px;
     width: 20px;
     height: 20px;
-    border-radius: 50%;
+}
+
+.snakeDie{
+    animation: snakeDie 1.5s linear;
+    transition: 0.5s;
+}
+
+@keyframes snakeDie{
+    0%{
+        opacity: 0;
+    }
+    25%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    75%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
 }
 
 
 /* This css is for fire game and the game is not complete
    ====================================================  */
-   #game{
+#game{
     background: url("https://i.pinimg.com/736x/89/e3/7d/89e37d9611818e81f65d368d0350e5c7.jpg") no-repeat;
     background-size: cover;
     object-fit: cover;
@@ -417,17 +456,6 @@ h1{
     width: 100%;
     position: relative;
     overflow: hidden;
-}
-
-.start{
-    position: relative;
-    top: 50%;
-    padding: 10px 21px;
-    font-size: 34px;
-    margin: auto;
-    display: block;
-    cursor: pointer;
-    z-index: 100;
 }
 
 .anime-section{
