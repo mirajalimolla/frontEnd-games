@@ -179,6 +179,7 @@
     let target = document.querySelector(".target");
     let timer = document.querySelector(".timer");
     let score = document.querySelector(".score");
+    let gmOverBtn = document.querySelector(".bubbleRestart");
     let scoreVal = 0;
 
     // Create target
@@ -219,7 +220,7 @@
     // Create bubbles and generate random number in bubble
     function bubbleGenerate() {
         let bubble = "";
-        for (let i = 0; i < 150; i++) {
+        for (let i = 0; i < 160; i++) {
             let rn = Math.floor(Math.random() * 10);
             bubble += `<div class="bubble">${rn}</div>`;
             bubbleStore.innerHTML = bubble;
@@ -230,18 +231,7 @@
 
     // Game Over function
     function gameOver() {
-        let gmOverContainer = document.createElement("div")
-        gmOverContainer.classList.add("gmOver-container");
-        bubbleContainer.appendChild(gmOverContainer);
-
-        let gmOverH1 = document.createElement("h2");
-        gmOverH1.innerText = "GAME OVER";
-        gmOverContainer.appendChild(gmOverH1);
-
-        let gmOverBtn = document.createElement("button");
-        gmOverBtn.innerText = "Play Again";
-        gmOverContainer.appendChild(gmOverBtn);
-
+        document.querySelector(".gmOver-container").style.display = "block";
         gmOverBtn.addEventListener("click", function () {
             targetFunc();
             timerFunc();
